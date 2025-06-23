@@ -11,6 +11,7 @@ public class EcommerceSpringApplication {
         Dotenv dotenv = Dotenv.configure().load();  // load the .env file form the root path.
         // this will get the environment variable and set them.
         dotenv.entries().forEach(entries -> System.setProperty(entries.getKey(), entries.getValue()));
+
         SpringApplication.run(EcommerceSpringApplication.class, args);
     }
 
