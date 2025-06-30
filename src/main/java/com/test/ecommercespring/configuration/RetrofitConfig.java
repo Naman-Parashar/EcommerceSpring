@@ -1,6 +1,7 @@
 package com.test.ecommercespring.configuration;
 
 import com.test.ecommercespring.gateway.api.FakeStoreCategoryApi;
+import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import retrofit2.Retrofit;
@@ -11,8 +12,10 @@ public class RetrofitConfig {
 
     @Bean
     public Retrofit retrofit() {
+        Dotenv dotenv = Dotenv.load();
+        String baseUrl = dotenv.get("FAKESTOREBASEURL");
         return new Retrofit.Builder()
-                .baseUrl("https://fakestoreapi.in/api/") // idealy this url should come from environment variable
+                .baseUrl(baseUrl)
                 .addConverterFactory(GsonConverterFactory.create()) // use for serialization and deserialization
                 .build();
     }
