@@ -1,5 +1,6 @@
 package com.test.ecommercespring.controllers;
 
+import com.test.ecommercespring.dto.AllProductDTO;
 import com.test.ecommercespring.dto.CatagoryDTO;
 import com.test.ecommercespring.services.FakeStoreCategoryService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +11,7 @@ import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/categories")
+@RequestMapping("api/fakestore")
 public class CategoryController {
 
     private final FakeStoreCategoryService fakeStoreCategoryService;
@@ -21,14 +22,24 @@ public class CategoryController {
     }
 
     @GetMapping
+    public String getApi() {
+        return "Welcome to EcommerceSpring Fake Store";
+    }
+
+    @GetMapping("getallcategory")
     public List<CatagoryDTO> getAllCategory() throws IOException {
         return fakeStoreCategoryService.getAllCategory();
+    }
+
+    @GetMapping("getallproducts")
+    public List<AllProductDTO> getAllProducts() throws IOException {
+        return fakeStoreCategoryService.getAllProducts();
     }
 
 }
 
 
-/**  Example
+/*  Example
  // if after category {above url} there is nothing
  @GetMapping public String getDetails() {
  return "This is the category API Get Request";
@@ -47,9 +58,9 @@ public class CategoryController {
  @PostMapping public String postCategory() {
  return "This is the category API as a post request";
  }
- **/
+ */
 
-/** using annotadion for DI
+/* using annotadion for DI
 
 
  @Autowired private FakeStoreCategoryService fakeStoreCategoryService;
