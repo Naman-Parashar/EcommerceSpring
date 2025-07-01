@@ -3,6 +3,7 @@ package com.test.ecommercespring.controllers;
 import com.test.ecommercespring.dto.AllProductDTO;
 import com.test.ecommercespring.dto.CatagoryDTO;
 import com.test.ecommercespring.services.FakeStoreCategoryService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,13 +28,14 @@ public class CategoryController {
     }
 
     @GetMapping("getallcategory")
-    public List<CatagoryDTO> getAllCategory() throws IOException {
-        return fakeStoreCategoryService.getAllCategory();
+    public ResponseEntity<List<CatagoryDTO>> getAllCategory() throws IOException {
+        List<CatagoryDTO> result = fakeStoreCategoryService.getAllCategory();
+        return ResponseEntity.ok(result);
     }
 
     @GetMapping("getallproducts")
-    public List<AllProductDTO> getAllProducts() throws IOException {
-        return fakeStoreCategoryService.getAllProducts();
+    public ResponseEntity<List<AllProductDTO>> getAllProducts() throws IOException {
+        return ResponseEntity.ok(fakeStoreCategoryService.getAllProducts());
     }
 
 }
