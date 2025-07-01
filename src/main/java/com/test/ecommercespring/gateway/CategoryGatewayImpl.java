@@ -38,7 +38,7 @@ public class CategoryGatewayImpl implements CatagoryGateway {
             throw new IOException("Failed to fetch fake store category");
         }
         List<FakeStoreResponseAllProductListDTO> listOfProduct = fakeStoreResponseAllProductDTO.getProducts();
-        System.out.println(fakeStoreResponseAllProductDTO);
+
         return listOfProduct.stream()
                 .map((FakeStoreResponseAllProductListDTO product) -> {
                     AllProductDTO dto = new AllProductDTO();
