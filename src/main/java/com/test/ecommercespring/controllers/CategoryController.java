@@ -1,6 +1,5 @@
 package com.test.ecommercespring.controllers;
 
-import com.test.ecommercespring.dto.AllProductDTO;
 import com.test.ecommercespring.dto.CatagoryDTO;
 import com.test.ecommercespring.services.FakeStoreCategoryService;
 import org.springframework.http.ResponseEntity;
@@ -31,11 +30,6 @@ public class CategoryController {
     public ResponseEntity<List<CatagoryDTO>> getAllCategory() throws IOException {
         List<CatagoryDTO> result = fakeStoreCategoryService.getAllCategory();
         return ResponseEntity.ok(result);
-    }
-
-    @GetMapping("getallproducts")
-    public ResponseEntity<List<AllProductDTO>> getAllProducts() throws IOException {
-        return ResponseEntity.ok(fakeStoreCategoryService.getAllProducts());
     }
 
 }

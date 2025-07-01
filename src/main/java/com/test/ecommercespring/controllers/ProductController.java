@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/fakestore/product")
@@ -18,6 +19,16 @@ public class ProductController {
 
     ProductController(FakeStoreProductService fakeStoreProductService) {
         this.fakeStoreProductService = fakeStoreProductService;
+    }
+
+    @GetMapping
+    public String getProductApi() {
+        return "Welcome to EcommerceSpring Fake Store wanna search product";
+    }
+
+    @GetMapping("getallproducts")
+    public ResponseEntity<List<AllProductDTO>> getAllProducts() throws IOException {
+        return ResponseEntity.ok(fakeStoreProductService.getAllProducts());
     }
 
     @GetMapping("/{id}")

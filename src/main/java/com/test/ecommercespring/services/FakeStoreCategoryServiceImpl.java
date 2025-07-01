@@ -1,6 +1,5 @@
 package com.test.ecommercespring.services;
 
-import com.test.ecommercespring.dto.AllProductDTO;
 import com.test.ecommercespring.dto.CatagoryDTO;
 import com.test.ecommercespring.gateway.CatagoryGateway;
 import org.springframework.stereotype.Service;
@@ -22,8 +21,4 @@ public class FakeStoreCategoryServiceImpl implements FakeStoreCategoryService {
         return this.catagoryGateway.getAllCategory();
     }
 
-    @Override
-    public List<AllProductDTO> getAllProducts() throws IOException {
-        return this.catagoryGateway.getAllProducts();
-    }
 }
