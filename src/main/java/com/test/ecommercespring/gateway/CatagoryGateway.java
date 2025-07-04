@@ -10,4 +10,6 @@ public interface CatagoryGateway {
 
     List<CatagoryDTO> getAllCategory() throws IOException;
 
+    List<CatagoryDTO> getAllCategoryByRestTemplate();
+
 }

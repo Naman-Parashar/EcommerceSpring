@@ -21,4 +21,8 @@ public class FakeStoreCategoryServiceImpl implements FakeStoreCategoryService {
         return this.catagoryGateway.getAllCategory();
     }
 
+    @Override
+    public List<CatagoryDTO> getAllCategoryByRestTemplate() {
+        return this.catagoryGateway.getAllCategoryByRestTemplate();
+    }
 }

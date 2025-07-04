@@ -32,6 +32,11 @@ public class CategoryController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping("getallcategorybyresttemplate")
+    public ResponseEntity<List<CatagoryDTO>> getAllCategoryByRestTemplate() {
+        return ResponseEntity.ok(fakeStoreCategoryService.getAllCategoryByRestTemplate());
+    }
+
 }
 
 

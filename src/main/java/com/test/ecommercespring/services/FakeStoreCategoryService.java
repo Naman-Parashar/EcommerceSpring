@@ -8,4 +8,6 @@ import java.util.List;
 public interface FakeStoreCategoryService {
     List<CatagoryDTO> getAllCategory() throws IOException;
 
+    List<CatagoryDTO> getAllCategoryByRestTemplate();
+
 }
