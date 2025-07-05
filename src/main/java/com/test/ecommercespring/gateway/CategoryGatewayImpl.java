@@ -3,6 +3,7 @@ package com.test.ecommercespring.gateway;
 import com.test.ecommercespring.dto.CatagoryDTO;
 import com.test.ecommercespring.dto.FakeStoreResponseDTO;
 import com.test.ecommercespring.gateway.api.FakeStoreCategoryApi;
+import com.test.ecommercespring.mapper.GetAppCatogeryMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -29,21 +30,13 @@ public class CategoryGatewayImpl implements CatagoryGateway {
         if (fakeStoreResponseDTO == null) {
             throw new IOException("Failed to fetch fake store category");
         }
-        return fakeStoreResponseDTO.getCategories().stream()
-                .map((String value) -> CatagoryDTO.builder()
-                        .name(value)
-                        .build())
-                .toList();
+        return GetAppCatogeryMapper.toCategoryDTO(fakeStoreResponseDTO);
         // in the above return statement getCategories ia already provided by retrofit.
     }
 
     @Override
     public List<CatagoryDTO> getAllCategoryByRestTemplate() {
         FakeStoreResponseDTO fakeStoreResponseDTO = restTemplate.getForObject("https://fakestoreapi.in/api/products/category", FakeStoreResponseDTO.class);
-        return fakeStoreResponseDTO.getCategories().stream()
-                .map((String value) -> CatagoryDTO.builder()
-                        .name(value)
-                        .build())
-                .toList();
+        return GetAppCatogeryMapper.toCategoryDTO(fakeStoreResponseDTO);
     }
 }
